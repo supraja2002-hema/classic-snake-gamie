@@ -1,0 +1,90 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'VT323', monospace;
+    /* This font gave a retro design */
+}
+
+body,
+.snake {
+    background-color: #726d6d;
+}
+
+#game-board{
+    border-radius: 100px;
+    display: grid;
+    grid-template-columns: repeat(20,20px);
+    grid-template-rows: repeat(20,20px);
+    margin: 5px; /*We will have a border later on,so to avoid overlapping with the border, we are using margin*/
+}
+
+.game-border-1 {
+    border: #5f3c04 solid 10px;
+    border-radius: 30px;
+    box-shadow: inset 0 0 0 10px #5f3c04;
+    /*box-shadow is applied on the inside. Since we have different borders, box-shadow is used to fill in the gap between these borders.*/
+}
+.game-border-2 {
+    border: #956909 solid 8px;
+    border-radius: 26px;
+    box-shadow: inset 0 0 0 10px #956909;
+}
+.game-border-3 {
+    border: #db7f1e solid 30px;
+    border-radius: 20px;
+    box-shadow: inset 0 0 0 5px #db7f1e;
+}
+
+#instruction-text {
+    position: absolute;
+    top: 60%;
+    color: #333;
+    width: 300px;
+    text-align: center;
+    text-transform: capitalize;
+    padding: 30px;
+    margin: 0;
+}
+
+.scores {
+    display: flex;
+    justify-content: space-between;
+}
+
+#score {
+    color: #dde4ca;
+}
+
+#score,
+#highScore {
+    font-size: 40px;
+    font-weight: bolder;
+    margin: 10px 0;
+}
+
+#highScore {
+    color: #b1d54d;
+    display: none;
+}
+
+.game-border-3,
+#logo {
+    background-color: #fdfdf6;
+}
+
+.snake{
+    border: #272525 1px dotted;
+}
+
+.food {
+    background-color: #dedede;
+    border: #999 5px solid;
+}
+
+#logo {
+    position: absolute;
+    height: 200px;
+}
