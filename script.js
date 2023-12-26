@@ -130,19 +130,33 @@ function handleKeyPress(event) {
         (!gameStarted && event.key === ' ')) {
         startGame();
     } else {
-        switch (event.key) {
-            case 'ArrowUp':
-                direction = 'up';
-                break;
-            case 'ArrowDown':
-                direction = 'down';
-                break;
-            case 'ArrowLeft':
-                direction = 'left';
-                break;
-            case 'ArrowRight':
-                direction = 'right';
-                break;
+        if (event.code === 'Space' || event.key === ' ') {
+            if (gameStarted) {
+              pauseGame();
+            } else {
+              // Resume the game
+              gameInterval = setInterval(() => {
+                move();
+                checkCollision();
+                draw();
+              }, gameSpeedDelay);
+              gameStarted = true;
+            }
+        } else {
+            switch (event.key) {
+                case 'ArrowUp':
+                    direction = 'up';
+                    break;
+                case 'ArrowDown':
+                    direction = 'down';
+                    break;
+                case 'ArrowLeft':
+                    direction = 'left';
+                    break;
+                case 'ArrowRight':
+                    direction = 'right';
+                    break;
+            }
         }
     }
 }
@@ -174,6 +188,12 @@ function checkCollision() {
             resetGame();
         }
     }
+}
+
+//Pause game when spacebar is clicked
+function pauseGame() {
+    clearInterval(gameInterval);
+    gameStarted = false;
 }
 
 function resetGame() {
